@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
-    text: 'Hello Vue!'
+    text: 'Hello Vue & TypeScript!'
   },
   mutations: {
     setText: (state, payload) => {

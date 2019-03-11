@@ -10,7 +10,7 @@ const resolve = (dir) => path.join(__dirname, '..', dir)
 module.exports = {
   mode: process.env.NODE_ENV,
   entry: {
-    bundle: ['@babel/polyfill', './src/styles/index.js', './src/main.js'],
+    bundle: ['@babel/polyfill', './src/styles/index.js', './src/main.ts'],
   },
   output: {
     path: resolve('public'),
@@ -37,6 +37,18 @@ module.exports = {
           //   extends: [resolve('.eslintrc.js')]
           // }
         }
+      },
+      {
+        test: /\.tsx?$/,
+        use: {
+          loader: "ts-loader",
+          options: {
+            configFile: resolve('tsconfig.json'),
+            appendTsSuffixTo: [/\.vue$/]
+          }
+        },
+        exclude: /node_modules/,
+        include: resolve('src')
       },
       {
         test: /\.vue$/,

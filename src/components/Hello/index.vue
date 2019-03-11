@@ -7,17 +7,16 @@
     </div>
 </template>
 <script>
-export default {
-    data: function(){
-        return {
-            hello: '点我'
-        }
-    },
-    methods: {
-        testClick(){
-            console.log('233')
-            this.hello = this.$store.state.text
-        }
+import Vue from 'vue'
+import Component from 'vue-class-component'
+
+@Component
+export default class Hello extends Vue {
+    hello = '点我'
+
+    testClick(){
+        console.log('233')
+        this.hello = this.$store.state.text
     }
 }
 </script>
@@ -27,7 +26,7 @@ export default {
         flex-flow: column;
         justify-content: space-around;
         align-items: center;
-        color: #41b883;
+        color: #007acc;
         font-size: 25px;
         font-weight: bold;
         padding-top: 20px;

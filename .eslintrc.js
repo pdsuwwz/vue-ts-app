@@ -5,7 +5,8 @@ const eslintConfig = {
     "ecmaVersion": 7,
     "sourceType": "module",
     "ecmaFeatures": {
-      "jsx": true
+      "jsx": true,
+      "legacyDecorators": true
     }
   },
   "env": {
