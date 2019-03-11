@@ -23,7 +23,6 @@ var babelConfig = {
     ],
     "@babel/plugin-syntax-dynamic-import",
     "@babel/plugin-syntax-import-meta",
-    ["@babel/plugin-proposal-class-properties",{ "loose": true }],
     "@babel/plugin-proposal-json-strings",
     [
       "@babel/plugin-proposal-decorators",
@@ -31,6 +30,8 @@ var babelConfig = {
         "legacy": true
       }
     ],
+    // 如果使用了 ts，那么此项配置就必须在 @babel/plugin-proposal-decorators 的后面
+    ["@babel/plugin-proposal-class-properties",{ "loose": true }],
     "@babel/plugin-proposal-function-sent",
     "@babel/plugin-proposal-export-default-from",
     "@babel/plugin-proposal-export-namespace-from",
