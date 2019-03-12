@@ -1,34 +1,11 @@
 const path = require('path');
 const HtmlwebpackPlugin = require('html-webpack-plugin');
-const TerserWebpackPlugin = require('terser-webpack-plugin')
-const config = require('../src/common/config.js');
+const config = require('../src/common/config.ts');
 const merge = require('webpack-merge');
 const baseConfig = require('./webpack.base.conf.js')
 const bundleConfig = require("../bundle-config.json")
 const TEM_PATH = './templates';
 const resolve = (dir) => path.join(__dirname, '..', dir)
-
-const optimization = {
-  splitChunks: {
-    cacheGroups: {
-      common: {
-        test: /[\\/]node_modules[\\/]/,
-        minSize: 30000,
-        maxSize: 512000,
-        minChunks: 2,
-        chunks: 'all',
-        priority: 1
-      },
-    },
-  },
-  minimizer: [new TerserWebpackPlugin({
-    sourceMap: false,
-    parallel: true,
-    terserOptions: {
-      keep_fnames: true,
-    },
-  })],
-};
 
 const plugins = [
   new HtmlwebpackPlugin({
@@ -43,7 +20,9 @@ const plugins = [
 
 module.exports = merge(baseConfig, {
   mode: 'development',
-  optimization,
+  optimization: {
+    minimize: false,
+  },
   devtool: 'cheap-module-eval-source-map',
   devServer: {
     contentBase: [resolve('public'), resolve('vendor')], // 配置多个数据源

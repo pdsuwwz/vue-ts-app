@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlwebpackPlugin = require('html-webpack-plugin');
-const config = require('../src/common/config.js');
+const TerserWebpackPlugin = require('terser-webpack-plugin')
+const config = require('../src/common/config.ts');
 const merge = require('webpack-merge');
 const baseConfig = require('./webpack.base.conf.js')
 const bundleConfig = require("../bundle-config.json")
@@ -30,12 +31,41 @@ const plugins = [
   }),
 ];
 
+const optimization = {
+  splitChunks: {
+    cacheGroups: {
+      common: {
+        test: /[\\/]node_modules[\\/]/,
+        minSize: 30000,
+        maxSize: 512000,
+        minChunks: 2,
+        chunks: 'all',
+        priority: 1
+      },
+      styles: {
+        name: 'style',
+        test: /\.css$/,
+        chunks: 'all',
+        enforce: true
+      }
+    },
+  },
+  minimizer: [new TerserWebpackPlugin({
+    sourceMap: false,
+    parallel: true,
+    terserOptions: {
+      keep_fnames: true,
+      output: {
+        comments: false,
+      },
+    },
+  })],
+};
+
 module.exports = merge(baseConfig, {
   mode: 'production',
-  optimization: {
-    minimize: true,
-  },
-  devtool: 'cheap-module-source-map',
+  optimization,
+  devtool: 'inline',
   devServer: {
     contentBase: [resolve('public'), resolve('vendor')], // 配置多个数据源
     inline: false, // 取消热更新，并且浏览器控制台不产生构建消息

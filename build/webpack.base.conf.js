@@ -10,7 +10,7 @@ const resolve = (dir) => path.join(__dirname, '..', dir)
 module.exports = {
   mode: process.env.NODE_ENV,
   entry: {
-    bundle: ['@babel/polyfill', './src/styles/index.js', './src/main.ts'],
+    bundle: ['@babel/polyfill', './src/styles/index.ts', './src/main.ts'],
   },
   output: {
     path: resolve('public'),
@@ -96,7 +96,7 @@ module.exports = {
         include: resolve('src')
       }, {
         test: /\.css/,
-        use: [MiniCssExtractPlugin.loader, "css-loader"],
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
       {
         test: /\.(png|jpe?g|bmp|gif|webp|svg)(\?.*)?$/,
@@ -155,11 +155,12 @@ module.exports = {
   ],
   resolve: {
     // 用于配置可解析的后缀名，其中缺省为 js 和 json
-    extensions: ['.js', '.jsx', '.json', '.vue'],
+    extensions: ['.ts', '.js', '.jsx', '.json', '.vue'],
     alias: { // 简化引用的路径名称
       '@': resolve('src'),
       '_c': resolve('src/components'),
       '_assets': path.join(__dirname, '../assets/'),
+      "_commMdule": resolve("src/styles"),
       'vue$': 'vue/dist/vue.esm.js'
     }
   },

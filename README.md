@@ -1,14 +1,10 @@
-最近手痒痒，看到官方的 Vue CLI 功能很好很强大
-
-就想着自己也来搭一个 Vue 项目脚手架
-
-由于做过基于 React 的，所以就本能的将其移植成了 Vue 啦 ~
+改造 Vue 脚手架 --> Vue+TypeScript
 
 若本项目有帮到你，可以赏个 star 哈 ✨
 
 ## 使用技术：
 
-> Vue2 + VueRouter3 + Vuex3 + Webpack4 + Babel7 + express
+> TypeScript3 + Vue2 + VueRouter3 + Vuex3 + Webpack4 + Babel7 + express
 
 
 ## 开发文档：
