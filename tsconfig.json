@@ -47,6 +47,13 @@
       "dom",
       "es2015",
       "es2015.promise"
+    ],
+    "typeRoots": [
+      "./node_modules/@types"
+    ],
+    "types": [
+      "node",
+      "webpack-env"
     ]
   }
 }
